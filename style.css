@@ -171,13 +171,17 @@ strong { font-weight: 600; }
 .logo { display: flex; flex-direction: column; align-items: flex-start; gap: 0.6rem; }
 .logo img { height: 2rem; width: auto; max-width: 9rem; object-fit: contain; opacity: 0.75; filter: brightness(0) invert(1); transition: opacity 0.2s, filter 0.2s; }
 :root[data-theme="light"] .logo img { filter: brightness(0); opacity: 0.7; }
+/* JPG logos (solid backgrounds): grayscale + blend so the background disappears */
+.logo img.opaque { filter: grayscale(1) invert(1) contrast(1.15) brightness(1.5); mix-blend-mode: screen; }
+:root[data-theme="light"] .logo img.opaque { filter: grayscale(1) contrast(1.15); mix-blend-mode: multiply; }
 .logo:hover img { opacity: 1; }
 .logo span { color: var(--muted); font-size: 0.8rem; line-height: 1.3; max-width: 9rem; }
 .logo.missing img { display: none; }
 .logo.missing span { color: var(--ink); font-size: 0.95rem; }
 
 /* Add class "color" to a .logos list to show original logo colors instead */
-.logos.color .logo img, :root[data-theme="light"] .logos.color .logo img { filter: none; opacity: 1; }
+.logos.color .logo img, :root[data-theme="light"] .logos.color .logo img,
+.logos.color .logo img.opaque, :root[data-theme="light"] .logos.color .logo img.opaque { filter: none; opacity: 1; mix-blend-mode: normal; }
 
 /* Experience roles */
 .roles { list-style: none; margin: 1.5rem 0 0; padding: 0; max-width: 44rem; }

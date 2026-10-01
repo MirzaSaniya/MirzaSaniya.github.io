@@ -12,7 +12,7 @@ Live site: <https://saniyamirza.com>
 | `style.css` | Layout, typography, colors, light and dark themes |
 | `script.js` | Theme toggle, project filters, the neural network animation, and logo and resume fallbacks |
 | `CNAME` | Connects the site to the custom domain. Do not delete |
-| `assets/portrait.jpg` | Profile photo for the "Beyond work" section (optional) |
+| `assets/portrait/pic.jpg` | Profile photo for the "Beyond work" section (optional) |
 | `assets/logos/` | Company, school, hackathon and conference logos (transparent PNG) |
 | `docs/SaniyaMirza_Resume.pdf` | Downloadable resume (the Resume buttons appear once it exists) |
 
