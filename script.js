@@ -249,6 +249,13 @@
       });
     });
 
+    // Logos: if an image file is missing, hide it and keep the organization name
+    document.querySelectorAll('.logo img').forEach(function (img) {
+      function markMissing() { img.parentNode.classList.add('missing'); }
+      if (img.complete && img.naturalWidth === 0) { markMissing(); }
+      img.addEventListener('error', markMissing);
+    });
+
     // Footer year
     var year = document.getElementById('year');
     if (year) { year.textContent = String(new Date().getFullYear()); }
