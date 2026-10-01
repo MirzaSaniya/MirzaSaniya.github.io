@@ -251,8 +251,6 @@
 
     // Logos: if an image file is missing, hide it and keep the organization name
     document.querySelectorAll('.logo img, .portrait img').forEach(function (img) {
-      // JPG logos have solid backgrounds, so they get a blend style instead of a silhouette
-      if (/\.jpe?g(\?|$)/i.test(img.getAttribute('src') || '')) { img.classList.add('opaque'); }
       function markMissing() { img.parentNode.classList.add('missing'); }
       if (img.complete && img.naturalWidth === 0) { markMissing(); }
       img.addEventListener('error', markMissing);
