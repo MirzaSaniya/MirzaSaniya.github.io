@@ -250,11 +250,20 @@
     });
 
     // Logos: if an image file is missing, hide it and keep the organization name
-    document.querySelectorAll('.logo img').forEach(function (img) {
+    document.querySelectorAll('.logo img, .portrait img').forEach(function (img) {
       function markMissing() { img.parentNode.classList.add('missing'); }
       if (img.complete && img.naturalWidth === 0) { markMissing(); }
       img.addEventListener('error', markMissing);
     });
+
+    // Resume buttons: only show them if the PDF has been uploaded
+    var resumeLinks = document.querySelectorAll('.resume-link');
+    function hideResume() { resumeLinks.forEach(function (l) { l.hidden = true; }); }
+    if (resumeLinks.length && window.fetch) {
+      fetch(resumeLinks[0].getAttribute('href'), { method: 'HEAD' })
+        .then(function (r) { if (!r.ok) { hideResume(); } })
+        .catch(hideResume);
+    }
 
     // Footer year
     var year = document.getElementById('year');

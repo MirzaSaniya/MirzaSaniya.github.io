@@ -28,6 +28,8 @@
   --net-edge: rgba(31, 91, 255, 0.16);
 }
 
+[hidden] { display: none !important; }
+
 /* Base */
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; background: var(--bg); }
@@ -186,6 +188,11 @@ strong { font-weight: 600; }
 .r-head { margin: 0; }
 .r-cat { color: var(--accent); font-size: 0.9rem; margin-left: 0.6rem; }
 .r-line { margin: 0.15rem 0 0; color: var(--muted); font-size: 0.95rem; }
+
+/* Portrait */
+.portrait { margin: 0 0 1.75rem; max-width: 17rem; }
+.portrait img { display: block; width: 100%; height: auto; border-radius: 2px; }
+.portrait.missing { display: none; }
 
 /* Footer */
 .site-footer { border-top: 1px solid var(--line); padding: 1.75rem 0 2.5rem; color: var(--muted); font-size: 0.875rem; }

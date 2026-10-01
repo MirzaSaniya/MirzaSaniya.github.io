@@ -1,0 +1,12 @@
+# macOS / Windows
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+
+# Logs and temp files
+*.log
+*.tmp
