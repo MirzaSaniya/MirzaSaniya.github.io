@@ -7,11 +7,11 @@
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="color-scheme" content="dark light">
   <title>Saniya Mirza | Data science and AI</title>
-  <meta name="description" content="Saniya Mirza is a data professional with 6+ years of experience in data analytics, data science and AI. Forecasting, risk and customer models, projects and hackathon work.">
+  <meta name="description" content="Saniya Mirza is a data professional with 7+ years of experience in data analytics, data science and AI. Forecasting, risk and customer models, projects and hackathon work.">
   <link rel="canonical" href="https://saniyamirza.com/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Saniya Mirza | Data science and AI">
-  <meta property="og:description" content="Forecasting, machine learning and analytics projects from a data professional with 6+ years of experience.">
+  <meta property="og:description" content="Forecasting, machine learning and analytics projects from a data professional with 7+ years of experience.">
   <meta property="og:url" content="https://saniyamirza.com/">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23060A14'/%3E%3Cg stroke='%234D8DFF' stroke-width='3'%3E%3Cline x1='14' y1='20' x2='32' y2='32'/%3E%3Cline x1='14' y1='44' x2='32' y2='32'/%3E%3Cline x1='32' y1='32' x2='50' y2='32'/%3E%3C/g%3E%3Cg fill='%236FE3FF'%3E%3Ccircle cx='14' cy='20' r='5'/%3E%3Ccircle cx='14' cy='44' r='5'/%3E%3Ccircle cx='32' cy='32' r='5'/%3E%3Ccircle cx='50' cy='32' r='5'/%3E%3C/g%3E%3C/svg%3E">
   <link rel="stylesheet" href="style.css">
@@ -29,6 +29,7 @@
           <li><a href="#experience">Experience</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#hackathons">Hackathons</a></li>
+          <li><a href="#conferences">Conferences</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -41,18 +42,17 @@
       <div class="wrap hero-grid">
         <div class="hero-text">
           <h1><span>Saniya</span> <span>Mirza</span></h1>
-          <p class="role">Data science and AI</p>
-          <p class="lead">I build data and machine learning systems that forecast revenue, score risk and segment customers. Six-plus years across analytics, data science and AI, working in Python, SQL and cloud platforms.</p>
+          <p class="role">Data Science and AI</p>
+          <p class="lead">I build data and machine learning systems that forecast revenue, score risk and segment customers, and AI agents that automate analysis. Seven-plus years across analytics, data science and AI, working in Python, SQL and cloud platforms.</p>
           <p class="actions">
             <a class="btn primary" href="#projects">View projects</a>
             <a class="btn" href="#contact">Get in touch</a>
           </p>
-          <p class="where">San Francisco Bay Area, California</p>
+          <p class="where">Location: San Jose, California</p>
         </div>
 
         <figure class="net-figure">
           <canvas id="net" class="net" aria-hidden="true"></canvas>
-          <figcaption>A small neural network, drawn live. Signals pass from inputs to outputs.</figcaption>
         </figure>
       </div>
     </section>
@@ -60,20 +60,25 @@
     <section class="section" id="projects" aria-labelledby="projects-h">
       <div class="wrap">
         <h2 id="projects-h">Projects</h2>
-        <p class="section-intro">Thirteen projects from my GitHub. Open a row for the summary and a link to the code. The blue dot marks the three I'd start with.</p>
+        <p class="section-intro">Selected projects from my GitHub. Open any row for a summary and a link to the code.</p>
 
         <div class="filters" role="group" aria-label="Filter projects">
           <button type="button" class="chip" data-filter="all" aria-pressed="true">All</button>
           <button type="button" class="chip" data-filter="ml" aria-pressed="false">Machine learning</button>
           <button type="button" class="chip" data-filter="forecasting" aria-pressed="false">Forecasting</button>
+          <button type="button" class="chip" data-filter="marketing" aria-pressed="false">Marketing analytics</button>
+          <button type="button" class="chip" data-filter="finance" aria-pressed="false">Finance and risk</button>
+          <button type="button" class="chip" data-filter="experimentation" aria-pressed="false">Experimentation</button>
           <button type="button" class="chip" data-filter="sql" aria-pressed="false">SQL</button>
+          <button type="button" class="chip" data-filter="cleaning" aria-pressed="false">Data cleaning</button>
+          <button type="button" class="chip" data-filter="viz" aria-pressed="false">Visualization</button>
           <button type="button" class="chip" data-filter="eda" aria-pressed="false">Exploratory analysis</button>
         </div>
         <p class="sr-only" id="filter-status" role="status" aria-live="polite"></p>
 
         <div class="projects" id="project-list">
 
-          <details class="project featured" data-tags="ml forecasting" open>
+          <details class="project featured" data-tags="ml forecasting marketing experimentation" open>
             <summary>
               <span class="p-title">Marketing analytics: lifetime value, churn and uplift</span>
               <span class="tools">Python, logistic regression, Random Forest, XGBoost</span>
@@ -85,7 +90,7 @@
             </div>
           </details>
 
-          <details class="project featured" data-tags="forecasting" open>
+          <details class="project featured" data-tags="forecasting marketing experimentation" open>
             <summary>
               <span class="p-title">Revenue (ARR) and sales forecasting</span>
               <span class="tools">Python, ARIMA, Prophet, LSTM, CausalImpact</span>
@@ -97,7 +102,7 @@
             </div>
           </details>
 
-          <details class="project featured" data-tags="ml sql" open>
+          <details class="project featured" data-tags="ml sql finance" open>
             <summary>
               <span class="p-title">PRiSE: predictive risk scoring for loan defaults</span>
               <span class="tools">Python, SQL, R, machine learning</span>
@@ -121,7 +126,7 @@
             </div>
           </details>
 
-          <details class="project" data-tags="ml">
+          <details class="project" data-tags="ml marketing">
             <summary>
               <span class="p-title">Amazon customer segmentation and recommender</span>
               <span class="tools">Python, K-means, feature engineering</span>
@@ -133,7 +138,7 @@
             </div>
           </details>
 
-          <details class="project" data-tags="eda sql">
+          <details class="project" data-tags="eda sql viz">
             <summary>
               <span class="p-title">Airbnb listings in New York City</span>
               <span class="tools">Python, SQL Server, Tableau</span>
@@ -145,7 +150,7 @@
             </div>
           </details>
 
-          <details class="project" data-tags="ml">
+          <details class="project" data-tags="ml finance">
             <summary>
               <span class="p-title">Real estate price prediction</span>
               <span class="tools">XGBoost, Lasso, Random Forest</span>
@@ -157,7 +162,7 @@
             </div>
           </details>
 
-          <details class="project" data-tags="sql eda">
+          <details class="project" data-tags="sql eda cleaning">
             <summary>
               <span class="p-title">COVID-19 database analysis</span>
               <span class="tools">SQL Server</span>
@@ -169,7 +174,7 @@
             </div>
           </details>
 
-          <details class="project" data-tags="sql">
+          <details class="project" data-tags="sql cleaning">
             <summary>
               <span class="p-title">Nashville housing data cleaning</span>
               <span class="tools">PostgreSQL</span>
@@ -181,7 +186,7 @@
             </div>
           </details>
 
-          <details class="project" data-tags="eda ml">
+          <details class="project" data-tags="eda ml cleaning">
             <summary>
               <span class="p-title">Car price predictor</span>
               <span class="tools">Python, Random Forest regression</span>
@@ -205,7 +210,7 @@
             </div>
           </details>
 
-          <details class="project" data-tags="eda">
+          <details class="project" data-tags="eda viz">
             <summary>
               <span class="p-title">Boston truck permit analysis</span>
               <span class="tools">Python, SciPy, Pandas, Matplotlib</span>
@@ -217,7 +222,7 @@
             </div>
           </details>
 
-          <details class="project" data-tags="eda ml">
+          <details class="project" data-tags="eda ml finance">
             <summary>
               <span class="p-title">Fortune 500 profitability and employee efficiency</span>
               <span class="tools">Python, Random Forest regression</span>
@@ -239,15 +244,57 @@
       <div class="wrap two-col">
         <h2 id="experience-h">Experience</h2>
         <div>
-          <p>I've worked at BlackRock, SAP, SkyGeni, Northeastern University, ICICI and GIC, improving model accuracy, reducing costs and automating workflows across technology, marketing and finance.</p>
-          <p>I lead data projects on cloud architectures, and I like turning messy business questions into models and dashboards that teams can use.</p>
-          <ul class="logos" aria-label="Companies I've worked with">
-            <li class="logo"><img src="assets/logos/blackrock.png" alt="" height="32" loading="lazy"><span>BlackRock</span></li>
-            <li class="logo"><img src="assets/logos/sap.png" alt="" height="32" loading="lazy"><span>SAP</span></li>
-            <li class="logo"><img src="assets/logos/skygeni.png" alt="" height="32" loading="lazy"><span>SkyGeni</span></li>
-            <li class="logo"><img src="assets/logos/northeastern.png" alt="" height="32" loading="lazy"><span>Northeastern University</span></li>
-            <li class="logo"><img src="assets/logos/icici.png" alt="" height="32" loading="lazy"><span>ICICI</span></li>
-            <li class="logo"><img src="assets/logos/gic.png" alt="" height="32" loading="lazy"><span>GIC</span></li>
+          <p>Seven-plus years of analytics, data science and AI work across technology, finance, banking and education.</p>
+          <ul class="roles" aria-label="Where I've worked">
+          <li class="job">
+            <span class="logo"><img src="assets/logos/adobe.png" alt="" height="32" loading="lazy"></span>
+            <div>
+              <p class="r-head"><strong>Adobe</strong> <span class="r-cat">AI and forecasting</span></p>
+              <p class="r-line">Forecasting models and AI agents for marketing and finance teams. Adobe AI Ambassador.</p>
+            </div>
+          </li>
+          <li class="job">
+            <span class="logo"><img src="assets/logos/blackrock.png" alt="" height="32" loading="lazy"></span>
+            <div>
+              <p class="r-head"><strong>BlackRock</strong> <span class="r-cat">Finance and asset management</span></p>
+              <p class="r-line">Data cloud pipelines and generative AI for investment teams.</p>
+            </div>
+          </li>
+          <li class="job">
+            <span class="logo"><img src="assets/logos/sap.png" alt="" height="32" loading="lazy"></span>
+            <div>
+              <p class="r-head"><strong>SAP</strong> <span class="r-cat">Enterprise software</span></p>
+              <p class="r-line">Predictive models and ETL for customer success. SAP Best Intern 2021.</p>
+            </div>
+          </li>
+          <li class="job">
+            <span class="logo"><img src="assets/logos/skygeni.png" alt="" height="32" loading="lazy"></span>
+            <div>
+              <p class="r-head"><strong>SkyGeni</strong> <span class="r-cat">Sales analytics</span></p>
+              <p class="r-line">Predictive models and pipelines on go-to-market data.</p>
+            </div>
+          </li>
+          <li class="job">
+            <span class="logo"><img src="assets/logos/northeastern.png" alt="" height="32" loading="lazy"></span>
+            <div>
+              <p class="r-head"><strong>Northeastern University</strong> <span class="r-cat">Higher education</span></p>
+              <p class="r-line">Workflow automation, plus teaching assistant for Predictive Analytics.</p>
+            </div>
+          </li>
+          <li class="job">
+            <span class="logo"><img src="assets/logos/icici.png" alt="" height="32" loading="lazy"></span>
+            <div>
+              <p class="r-head"><strong>ICICI Bank</strong> <span class="r-cat">Banking</span></p>
+              <p class="r-line">SQL automation, a BigQuery warehouse and Tableau dashboards. Top Analyst award.</p>
+            </div>
+          </li>
+          <li class="job">
+            <span class="logo"><img src="assets/logos/gic.png" alt="" height="32" loading="lazy"></span>
+            <div>
+              <p class="r-head"><strong>GIC Housing</strong> <span class="r-cat">Housing finance</span></p>
+              <p class="r-line">PRiSE, a machine learning model that reduced loan defaults by 28%.</p>
+            </div>
+          </li>
           </ul>
         </div>
       </div>
@@ -257,12 +304,11 @@
       <div class="wrap two-col">
         <h2 id="skills-h">Skills</h2>
         <dl class="skills">
-          <div><dt>Machine learning and AI</dt><dd>scikit-learn, XGBoost, PyTorch, TensorFlow, Keras, OpenCV, generative AI, OpenSearch</dd></div>
-          <div><dt>Programming</dt><dd>Python, SQL, R</dd></div>
-          <div><dt>Cloud</dt><dd>AWS, Azure, GCP, Snowflake</dd></div>
-          <div><dt>Big data</dt><dd>Snowflake, Hadoop, Hive, Spark, Databricks, Oracle, BigQuery</dd></div>
-          <div><dt>ETL and pipelines</dt><dd>dbt, Airflow, Git</dd></div>
-          <div><dt>BI and visualization</dt><dd>Tableau, Power BI, Alteryx, Looker, AWS QuickSight, Mode, Sigma, Excel</dd></div>
+          <div><dt>AI and LLMs</dt><dd>HuggingFace, RAG, LangChain, OpenAI, Claude, generative AI, OpenSearch</dd></div>
+          <div><dt>Machine learning</dt><dd>scikit-learn, XGBoost, PyTorch, TensorFlow, Keras, OpenCV, Prophet, SARIMAX</dd></div>
+          <div><dt>Programming and ETL</dt><dd>Python, SQL, R, dbt, Airflow, Alteryx, Git</dd></div>
+          <div><dt>Cloud and big data</dt><dd>AWS, Azure, GCP, Snowflake, Databricks, Spark, Hadoop, Hive, BigQuery, Oracle</dd></div>
+          <div><dt>BI and visualization</dt><dd>Tableau, Power BI, Looker, AWS QuickSight, Mode, Sigma, Excel</dd></div>
           <div><dt>Marketing and web analytics</dt><dd>Adobe Analytics, Google Analytics, Salesforce</dd></div>
         </dl>
       </div>
@@ -291,19 +337,43 @@
       </div>
     </section>
 
+    <section class="section" id="conferences" aria-labelledby="conferences-h">
+      <div class="wrap two-col">
+        <h2 id="conferences-h">Conferences</h2>
+        <div>
+          <p>Speaker and panelist on AI and technology topics.</p>
+          <ul class="logos first" aria-label="Conferences and partner organizations">
+            <li class="logo"><img src="assets/logos/ai-sustainability-summit.png" alt="" height="32" loading="lazy"><span>AI Sustainability Summit</span></li>
+            <li class="logo"><img src="assets/logos/swe.png" alt="" height="32" loading="lazy"><span>Society of Women Engineers</span></li>
+            <li class="logo"><img src="assets/logos/meta.png" alt="" height="32" loading="lazy"><span>Meta</span></li>
+            <li class="logo"><img src="assets/logos/microsoft.png" alt="" height="32" loading="lazy"><span>Microsoft</span></li>
+            <li class="logo"><img src="assets/logos/google.png" alt="" height="32" loading="lazy"><span>Google</span></li>
+            <li class="logo"><img src="assets/logos/costco.png" alt="" height="32" loading="lazy"><span>Costco</span></li>
+          </ul>
+          <ul class="timeline">
+            <li><span class="when">2026</span><p><strong>AI Sustainability Summit.</strong></p></li>
+            <li><span class="when">2025</span><p><strong>Society of Women Engineers Conference.</strong></p></li>
+            <li><span class="when">2022</span><p><strong>Meta and BlackRock Forum.</strong></p></li>
+            <li><span class="when">2021</span><p><strong>Panel discussion</strong> with Microsoft, BlackRock and Northeastern University.</p></li>
+            <li><span class="when">2020</span><p><strong>Panel discussion</strong> with Google, Costco and Northeastern University.</p></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="education" aria-labelledby="education-h">
       <div class="wrap two-col">
         <h2 id="education-h">Education and certifications</h2>
         <div>
           <ul class="plain">
-            <li><strong>Computer Science for Artificial Intelligence,</strong> Harvard University, USA</li>
-            <li><strong>MS in Data Analytics and Data Science,</strong> Northeastern University, USA</li>
-            <li><strong>MBA in Business Analytics and Finance,</strong> CIMP, India</li>
-            <li><strong>BS in Statistics and Finance,</strong> Patna Women's College, India</li>
+            <li><strong>Artificial Intelligence Program,</strong> Stanford University, USA (2026-27)</li>
+            <li><strong>MS in Data Science and Analytics,</strong> Northeastern University, USA (2019-21)</li>
+            <li><strong>MBA in Business Analytics and Finance,</strong> CIMP, India (2015-17), gold medalist</li>
+            <li><strong>BS in Statistics and Finance,</strong> Patna Women's College, India (2012-15)</li>
           </ul>
-          <p>Certified: AWS Cloud Solutions Architect, and Snowflake Data Engineering Techniques.</p>
+          <p>Certified: AWS Certified Cloud Practitioner and Snowflake Data Engineering. Pursuing the Databricks Certified Generative AI Engineer.</p>
           <ul class="logos" aria-label="Schools">
-            <li class="logo"><img src="assets/logos/harvard.png" alt="" height="32" loading="lazy"><span>Harvard University</span></li>
+            <li class="logo"><img src="assets/logos/stanford.png" alt="" height="32" loading="lazy"><span>Stanford University</span></li>
             <li class="logo"><img src="assets/logos/northeastern.png" alt="" height="32" loading="lazy"><span>Northeastern University</span></li>
             <li class="logo"><img src="assets/logos/cimp.png" alt="" height="32" loading="lazy"><span>CIMP</span></li>
             <li class="logo"><img src="assets/logos/patna-womens-college.png" alt="" height="32" loading="lazy"><span>Patna Women's College</span></li>
@@ -311,24 +381,6 @@
         </div>
       </div>
     </section>
-
-    <!--
-      CONFERENCES: remove this comment wrapper once you have the events and logos.
-      Add one <li> per conference. Put the logo in assets/logos/ and keep the name as text.
-
-    <section class="section" id="conferences" aria-labelledby="conferences-h">
-      <div class="wrap two-col">
-        <h2 id="conferences-h">Conferences</h2>
-        <div>
-          <p>Events I've attended, spoken at or helped organize.</p>
-          <ul class="logos first" aria-label="Conferences">
-            <li class="logo"><img src="assets/logos/conference-one.png" alt="" height="32" loading="lazy"><span>Conference name, year</span></li>
-            <li class="logo"><img src="assets/logos/conference-two.png" alt="" height="32" loading="lazy"><span>Conference name, year</span></li>
-          </ul>
-        </div>
-      </div>
-    </section>
-    -->
 
 
     <section class="section contact" id="contact" aria-labelledby="contact-h">

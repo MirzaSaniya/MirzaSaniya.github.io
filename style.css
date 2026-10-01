@@ -83,7 +83,7 @@ strong { font-weight: 600; }
 
 .hero h1 { font-size: clamp(3.6rem, 12vw, 7.5rem); letter-spacing: -0.045em; line-height: 0.95; }
 .hero h1 span { display: block; }
-.role { font-family: var(--display); font-weight: 300; font-size: clamp(1.25rem, 2.6vw, 1.65rem); color: var(--accent); margin: 1.5rem 0 1.25rem; letter-spacing: -0.01em; }
+.hero .role { font-family: var(--display); font-weight: 400; font-variant-caps: small-caps; font-size: clamp(1.4rem, 3vw, 1.9rem); color: var(--accent); margin: 1.5rem 0 1.25rem; letter-spacing: 0.06em; }
 .lead { font-size: 1.1rem; color: var(--ink); max-width: 34rem; }
 .where { color: var(--muted); font-size: 0.9rem; margin-top: 1.75rem; }
 .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1.75rem 0 0; }
@@ -132,10 +132,6 @@ strong { font-weight: 600; }
 .project summary:hover .p-title { color: var(--accent); }
 
 .p-title { font-family: var(--display); font-weight: 300; font-size: clamp(1.2rem, 2.4vw, 1.55rem); letter-spacing: -0.015em; line-height: 1.2; transition: color 0.2s; }
-.project.featured .p-title::before {
-  content: ""; display: inline-block; width: 0.5rem; height: 0.5rem; border-radius: 50%;
-  background: var(--accent); margin-right: 0.75rem; vertical-align: 0.12em;
-}
 .tools { grid-column: 1; color: var(--muted); font-family: var(--mono); font-size: 0.78rem; line-height: 1.5; }
 
 .chev { grid-column: 2; grid-row: 1; position: relative; width: 0.9rem; height: 0.9rem; align-self: center; }
@@ -180,6 +176,16 @@ strong { font-weight: 600; }
 
 /* Add class "color" to a .logos list to show original logo colors instead */
 .logos.color .logo img, :root[data-theme="light"] .logos.color .logo img { filter: none; opacity: 1; }
+
+/* Experience roles */
+.roles { list-style: none; margin: 1.5rem 0 0; padding: 0; max-width: 44rem; }
+.job { display: flex; align-items: center; gap: 1.75rem; padding: 1.1rem 0; border-top: 1px solid var(--line); }
+.job .logo { flex: 0 0 7rem; }
+.job .logo img { max-width: 7rem; }
+.job .logo.missing { display: none; }
+.r-head { margin: 0; }
+.r-cat { color: var(--accent); font-size: 0.9rem; margin-left: 0.6rem; }
+.r-line { margin: 0.15rem 0 0; color: var(--muted); font-size: 0.95rem; }
 
 /* Footer */
 .site-footer { border-top: 1px solid var(--line); padding: 1.75rem 0 2.5rem; color: var(--muted); font-size: 0.875rem; }
