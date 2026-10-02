@@ -9,8 +9,8 @@ Live site: <https://saniyamirza.com>
 | Path | Purpose |
 | --- | --- |
 | `index.html` | All page content, navigation, metadata and links |
-| `style.css` | Card layout, typography, colors, light and dark themes |
-| `script.js` | Light/dark toggle, mobile menu, project filters, and fallbacks for missing logos, photo and resume |
+| `style.css` | Layout, typography, colors, dark (default) and light themes |
+| `script.js` | Floating header, light/dark toggle, mobile menu, project filters, the live network in the hero, and fallbacks for missing logos, photo and resume |
 | `CNAME` | Connects the site to the custom domain. Do not delete |
 | `assets/portrait/pic.jpg` | Profile photo for the "Beyond work" section (optional) |
 | `assets/logos/` | Company, school, hackathon and conference logos (transparent PNG) |
