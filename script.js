@@ -72,15 +72,54 @@
           p.hidden = !match;
           if (match) { shown += 1; }
         });
+        document.querySelectorAll('.project-group').forEach(function (g) {
+          g.hidden = g.querySelectorAll('.project:not([hidden])').length === 0;
+        });
         if (status) { status.textContent = 'Showing ' + shown + ' of ' + projects.length + ' projects'; }
       });
     });
 
-    // Logos: if an image file is missing, hide it and keep the organization name
-    document.querySelectorAll('.logo img').forEach(function (img) {
+    // Logos, covers and photos: if an image file is missing, hide it (the text stays)
+    document.querySelectorAll('.logo img, .cover img, .photo img').forEach(function (img) {
       function markMissing() { img.parentNode.classList.add('missing'); }
       if (img.complete && img.naturalWidth === 0) { markMissing(); }
       img.addEventListener('error', markMissing);
+    });
+
+    // Logos: crop empty white or transparent margins so every logo fills its tile
+    function trimLogo(img) {
+      if (img.getAttribute('data-trimmed')) { return; }
+      img.setAttribute('data-trimmed', '1');
+      try {
+        var w = img.naturalWidth, h = img.naturalHeight;
+        if (!w || !h) { return; }
+        var canvas = document.createElement('canvas');
+        canvas.width = w; canvas.height = h;
+        var ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0);
+        var data = ctx.getImageData(0, 0, w, h).data;
+        var top = h, left = w, right = -1, bottom = -1;
+        for (var y = 0; y < h; y += 1) {
+          for (var x = 0; x < w; x += 1) {
+            var i = (y * w + x) * 4;
+            if (data[i + 3] < 16) { continue; }
+            if (data[i] > 245 && data[i + 1] > 245 && data[i + 2] > 245) { continue; }
+            if (x < left) { left = x; } if (x > right) { right = x; }
+            if (y < top) { top = y; } if (y > bottom) { bottom = y; }
+          }
+        }
+        if (right < 0) { return; }
+        var cw = right - left + 1, ch = bottom - top + 1;
+        if (cw * ch > w * h * 0.9) { return; }
+        var out = document.createElement('canvas');
+        out.width = cw; out.height = ch;
+        out.getContext('2d').drawImage(canvas, left, top, cw, ch, 0, 0, cw, ch);
+        img.src = out.toDataURL('image/png');
+      } catch (e) { /* cannot read the image (for example on a local file); keep the original */ }
+    }
+    document.querySelectorAll('.logo img').forEach(function (img) {
+      if (img.complete && img.naturalWidth > 0) { trimLogo(img); }
+      else { img.addEventListener('load', function () { trimLogo(img); }); }
     });
 
     // Profile photo: show initials until the photo loads

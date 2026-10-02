@@ -118,6 +118,16 @@ li + li { margin-top: 0.4rem; }
 .project .tags { margin-top: auto; padding-top: 0.5rem; }
 .text-link { display: inline-block; margin-top: 1rem; font-weight: 600; }
 
+
+/* Project groups (by institution) */
+.project-group { margin-top: 2.75rem; }
+.project-group.first { margin-top: 0; }
+.group-heading { margin-bottom: 0.9rem; }
+.group-heading h3 { font-size: 1.35rem; }
+.group-note { color: var(--muted); max-width: 42rem; margin: 0 0 1.25rem; }
+.project-group .project-grid { margin-top: 1.25rem; }
+.project-group .group-note + .project-grid { margin-top: 0; }
+
 /* Filters */
 .filters { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 1.5rem; }
 .chip { background: var(--card); border: 1px solid var(--border); border-radius: 999px; padding: 0.3rem 0.95rem; font-size: 0.875rem; color: var(--muted); cursor: pointer; }
@@ -128,7 +138,12 @@ li + li { margin-top: 0.4rem; }
 .logo img { display: block; box-sizing: content-box; width: 6.5rem; height: 2.75rem; object-fit: contain; padding: 0.4rem 0.6rem; background: #fff; border: 1px solid var(--border); border-radius: 6px; }
 .logo.missing img { display: none; }
 .company-heading > .logo, .entry > .logo { flex: 0 0 auto; }
-.company-heading > .logo.missing, .entry > .logo.missing { display: none; }
+.company-heading > .logo.missing::before, .entry > .logo.missing::before {
+  content: attr(data-initials); display: grid; place-items: center; box-sizing: content-box;
+  width: 6.5rem; height: 2.75rem; padding: 0.4rem 0.6rem;
+  background: var(--accent-soft); color: var(--accent); border: 1px solid var(--border); border-radius: 6px;
+  font-weight: 700; letter-spacing: 0.04em;
+}
 .entry { display: flex; align-items: center; gap: 1.1rem; margin-top: 1.1rem; }
 .entry h4 { margin: 0; }
 .entry p { margin: 0.15rem 0 0; }
@@ -137,6 +152,27 @@ li + li { margin-top: 0.4rem; }
 .logos .logo { display: flex; flex-direction: column; align-items: flex-start; gap: 0.4rem; }
 .logos .logo span { color: var(--muted); font-size: 0.8rem; line-height: 1.3; max-width: 6.5rem; }
 .logos .logo.missing span { color: var(--ink); font-size: 0.9rem; max-width: none; }
+
+
+/* Beyond work: activities, books, movies, food */
+.facts-plain { list-style: none; padding: 0; margin: 0.75rem 0 0; }
+.facts-plain li { padding: 0.65rem 0; border-top: 1px solid var(--border); margin: 0; }
+.facts-plain li:first-child { border-top: 0; padding-top: 0; }
+.facts-plain strong { color: var(--ink); }
+.interest-grid { margin-top: 1.25rem; }
+.interest-wide { grid-column: 1 / -1; }
+.shelf { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(6.5rem, 1fr)); gap: 1.25rem 1rem; }
+.shelf li { margin: 0; line-height: 1.4; }
+.shelf .cover { display: block; margin-bottom: 0.6rem; }
+.shelf .cover img { display: block; width: 100%; height: 9.5rem; object-fit: contain; background: var(--tint); border-radius: 5px; box-shadow: 0 4px 12px rgba(20, 32, 58, 0.14); }
+.shelf .cover.missing { height: 9.5rem; background: var(--accent-soft); border-radius: 5px; }
+.shelf .cover.missing img { display: none; }
+.shelf cite { display: block; font-style: normal; font-weight: 600; font-size: 0.9rem; color: var(--ink); }
+.shelf .by { display: block; font-size: 0.8rem; color: var(--muted); margin-top: 0.15rem; }
+.gallery { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(9rem, 12rem)); gap: 1rem; }
+.gallery li { margin: 0; }
+.gallery img { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 8px; border: 1px solid var(--border); }
+.gallery .photo.missing { display: none; }
 
 /* Dated facts */
 .facts { list-style: none; padding: 0; margin: 0; }
@@ -174,6 +210,7 @@ li + li { margin-top: 0.4rem; }
   .date { white-space: normal; }
   .company-heading { align-items: flex-start; gap: 1rem; }
   .logo img { width: 4.75rem; height: 2.25rem; }
+  .company-heading > .logo.missing::before, .entry > .logo.missing::before { width: 4.75rem; height: 2.25rem; }
   .logos .logo span { max-width: 4.75rem; }
   .facts li { grid-template-columns: 3.75rem 1fr; gap: 0.75rem; }
 }

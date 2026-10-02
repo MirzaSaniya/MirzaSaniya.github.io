@@ -79,19 +79,19 @@
       <article class="card">
         <h3>Education</h3>
         <div class="entry">
-          <span class="logo"><img src="assets/logos/stanford.png" alt="" width="96" height="64"></span>
+          <span class="logo" data-initials="SU"><img src="assets/logos/stanford.png" alt="" width="96" height="64"></span>
           <div><h4>Stanford University, USA</h4><p>Artificial Intelligence Program<br>2026-27 &middot; 95.8%</p></div>
         </div>
         <div class="entry">
-          <span class="logo"><img src="assets/logos/northeastern.png" alt="" width="96" height="64"></span>
+          <span class="logo" data-initials="NU"><img src="assets/logos/northeastern.png" alt="" width="96" height="64"></span>
           <div><h4>Northeastern University, USA</h4><p>MS in Data Science and Analytics<br>2019-21 &middot; GPA 3.93/4</p></div>
         </div>
         <div class="entry">
-          <span class="logo"><img src="assets/logos/cimp.png" alt="" width="96" height="64"></span>
+          <span class="logo" data-initials="CIMP"><img src="assets/logos/cimp.png" alt="" width="96" height="64"></span>
           <div><h4>CIMP, India</h4><p>MBA in Business Analytics and Finance<br>2015-17 &middot; Gold medalist</p></div>
         </div>
         <div class="entry">
-          <span class="logo"><img src="assets/logos/patna-womens-college.png" alt="" width="96" height="64"></span>
+          <span class="logo" data-initials="PW"><img src="assets/logos/patna-womens-college.png" alt="" width="96" height="64"></span>
           <div><h4>Patna Women's College, India</h4><p>BS in Statistics and Finance<br>2012-15</p></div>
         </div>
         <h4>Certifications</h4>
@@ -112,7 +112,7 @@
         <article class="card">
           <div class="card-heading">
             <div class="company-heading">
-              <span class="logo"><img src="assets/logos/adobe.png" alt="" width="96" height="64"></span>
+              <span class="logo" data-initials="A"><img src="assets/logos/adobe.png" alt="" width="96" height="64"></span>
               <div><h3>Data Scientist</h3><p class="muted">Adobe, San Jose, CA</p></div>
             </div>
             <span class="date">Jun 2025 &ndash; Present</span>
@@ -124,7 +124,7 @@
         <article class="card">
           <div class="card-heading">
             <div class="company-heading">
-              <span class="logo"><img src="assets/logos/blackrock.jpg" alt="" width="96" height="64"></span>
+              <span class="logo" data-initials="BR"><img src="assets/logos/blackrock.jpg" alt="" width="96" height="64"></span>
               <div><h3>Senior Data Analyst</h3><p class="muted">BlackRock, San Francisco, CA</p></div>
             </div>
             <span class="date">Aug 2021 &ndash; Jun 2025</span>
@@ -136,7 +136,7 @@
         <article class="card">
           <div class="card-heading">
             <div class="company-heading">
-              <span class="logo"><img src="assets/logos/sap.png" alt="" width="96" height="64"></span>
+              <span class="logo" data-initials="SAP"><img src="assets/logos/sap.png" alt="" width="96" height="64"></span>
               <div><h3>Data Analyst Intern</h3><p class="muted">SAP, Houston, TX</p></div>
             </div>
             <span class="date">Oct 2020 &ndash; Apr 2021</span>
@@ -148,7 +148,7 @@
         <article class="card">
           <div class="card-heading">
             <div class="company-heading">
-              <span class="logo"><img src="assets/logos/skygeni.png" alt="" width="96" height="64"></span>
+              <span class="logo" data-initials="SG"><img src="assets/logos/skygeni.png" alt="" width="96" height="64"></span>
               <div><h3>Data Science Intern</h3><p class="muted">SkyGeni, San Jose, CA</p></div>
             </div>
             <span class="date">Jul 2020 &ndash; Sep 2020</span>
@@ -160,7 +160,7 @@
         <article class="card">
           <div class="card-heading">
             <div class="company-heading">
-              <span class="logo"><img src="assets/logos/northeastern.png" alt="" width="96" height="64"></span>
+              <span class="logo" data-initials="NU"><img src="assets/logos/northeastern.png" alt="" width="96" height="64"></span>
               <div><h3>Student Data Analyst</h3><p class="muted">Northeastern University, San Jose, CA</p></div>
             </div>
             <span class="date">Apr 2020 &ndash; Apr 2021</span>
@@ -172,7 +172,7 @@
         <article class="card">
           <div class="card-heading">
             <div class="company-heading">
-              <span class="logo"><img src="assets/logos/icici.jpg" alt="" width="96" height="64"></span>
+              <span class="logo" data-initials="IC"><img src="assets/logos/icici.jpg" alt="" width="96" height="64"></span>
               <div><h3>Data Analyst</h3><p class="muted">ICICI Bank, India</p></div>
             </div>
             <span class="date">Jun 2017 &ndash; Sep 2018</span>
@@ -184,7 +184,7 @@
         <article class="card">
           <div class="card-heading">
             <div class="company-heading">
-              <span class="logo"><img src="assets/logos/gic.png" alt="" width="96" height="64"></span>
+              <span class="logo" data-initials="GIC"><img src="assets/logos/gic.png" alt="" width="96" height="64"></span>
               <div><h3>Data Analyst Intern</h3><p class="muted">GIC Housing, India</p></div>
             </div>
             <span class="date">Apr 2016 &ndash; Jun 2016</span>
@@ -199,11 +199,12 @@
 
   <section id="projects" class="section container">
     <div class="section-heading"><p class="eyebrow">Projects</p><h2>Selected projects</h2></div>
-    <p class="section-intro">Selected projects from my GitHub. Each card links to the code.</p>
+    <p class="section-intro">Selected projects from my GitHub, grouped by where I built them. Each card links to the code.</p>
 
     <div class="filters" role="group" aria-label="Filter projects">
       <button type="button" class="chip" data-filter="all" aria-pressed="true">All</button>
       <button type="button" class="chip" data-filter="ml" aria-pressed="false">Machine learning</button>
+      <button type="button" class="chip" data-filter="ai" aria-pressed="false">AI algorithms</button>
       <button type="button" class="chip" data-filter="forecasting" aria-pressed="false">Forecasting</button>
       <button type="button" class="chip" data-filter="marketing" aria-pressed="false">Marketing analytics</button>
       <button type="button" class="chip" data-filter="finance" aria-pressed="false">Finance and risk</button>
@@ -215,7 +216,46 @@
     </div>
     <p class="sr-only" id="filter-status" role="status" aria-live="polite"></p>
 
-    <div class="grid two project-grid" id="project-list">
+    <div id="project-list">
+    <div class="project-group first">
+      <div class="group-heading company-heading">
+        <span class="logo" data-initials="SU"><img src="assets/logos/stanford.png" alt="" width="96" height="64"></span>
+        <div><h3>Stanford University</h3><p class="muted">Artificial Intelligence Program, 2026-27</p></div>
+      </div>
+      <p class="group-note">Independent implementations of ideas from the program, including search, constraint satisfaction and probabilistic inference.</p>
+      <div class="grid two project-grid">
+        <article class="card project" data-tags="ai">
+          <p class="kicker">AI algorithms</p>
+          <h3>AI constraint scheduler</h3>
+          <p>Generates conflict-free meeting schedules as a constraint satisfaction problem. It uses backtracking search with MRV and LCV ordering, forward checking and constraint propagation, and in the demo it schedules 4 of 4 meetings in 5 search nodes with no backtracking.</p>
+          <div class="tags"><span>Python</span><span>Constraint satisfaction</span><span>Backtracking</span><span>MRV and LCV</span><span>Forward checking</span></div>
+          <a class="text-link" href="https://github.com/MirzaSaniya/ai-constraint-scheduler" target="_blank" rel="noopener noreferrer">View the repository</a>
+        </article>
+
+        <article class="card project" data-tags="ai">
+          <p class="kicker">AI algorithms</p>
+          <h3>Intelligent route planner</h3>
+          <p>Compares Uniform Cost Search and A* for optimal route planning on weighted graphs, using admissible heuristics, path reconstruction and search-efficiency benchmarking to show the trade-offs.</p>
+          <div class="tags"><span>Python</span><span>Uniform Cost Search</span><span>A* search</span><span>Heuristics</span><span>Graph algorithms</span></div>
+          <a class="text-link" href="https://github.com/MirzaSaniya/intelligent-route-planner" target="_blank" rel="noopener noreferrer">View the repository</a>
+        </article>
+
+        <article class="card project" data-tags="ai">
+          <p class="kicker">AI algorithms</p>
+          <h3>Probabilistic risk inference</h3>
+          <p>A Bayesian network that estimates operational risk from observed evidence such as load, anomaly signals and service symptoms, computing posterior probabilities by enumeration.</p>
+          <div class="tags"><span>Python</span><span>Bayesian networks</span><span>Probabilistic inference</span></div>
+          <a class="text-link" href="https://github.com/MirzaSaniya/probabilistic-risk-inference" target="_blank" rel="noopener noreferrer">View the repository</a>
+        </article>
+
+      </div>
+    </div>
+    <div class="project-group">
+      <div class="group-heading company-heading">
+        <span class="logo" data-initials="NU"><img src="assets/logos/northeastern.png" alt="" width="96" height="64"></span>
+        <div><h3>Northeastern University</h3><p class="muted">MS in Data Science and Analytics, 2019-21</p></div>
+      </div>
+      <div class="grid two project-grid">
 
       <article class="card project" data-tags="ml forecasting marketing experimentation">
         <p class="kicker">Marketing analytics</p>
@@ -231,14 +271,6 @@
         <p>Forecasts annual recurring revenue to find growth patterns, seasonality and churn trends by segment. Also covers pricing elasticity, promotion impact, multi-touch attribution and CPA versus LTV.</p>
         <div class="tags"><span>Python</span><span>ARIMA</span><span>Prophet</span><span>LSTM</span><span>CausalImpact</span></div>
         <a class="text-link" href="https://github.com/MirzaSaniya/Time-Series-Forecasting-for-Revenue-ARR-Sales-in-Python/blob/main/Time_Series_Forecast_for_Sales_and_Revenue_Saniya_Mirza.ipynb" target="_blank" rel="noopener noreferrer">Open the notebook</a>
-      </article>
-
-      <article class="card project" data-tags="ml sql finance">
-        <p class="kicker">Finance and risk</p>
-        <h3>PRiSE: predictive risk scoring for loan defaults</h3>
-        <p>A scoring engine that flags likely home loan defaulters from demographic, geographic, credit appraisal and loan-specific factors. It reduced loan defaults by 28% and the research won the Best Research Paper Award at GCBFR USA.</p>
-        <div class="tags"><span>Python</span><span>SQL</span><span>R</span><span>Machine learning</span></div>
-        <a class="text-link" href="https://drive.google.com/file/d/1D5ABJ0wycU69jcHpxwls-e-1bRz8Gu7W/view?usp=sharing" target="_blank" rel="noopener noreferrer">Read the paper</a>
       </article>
 
       <article class="card project" data-tags="ml forecasting">
@@ -321,6 +353,24 @@
         <a class="text-link" href="https://github.com/MirzaSaniya/Fortune-500-Companies-Performance-Analysis/blob/main/Fortune_500_Companies_Performance_Analysis.ipynb" target="_blank" rel="noopener noreferrer">Open the notebook</a>
       </article>
 
+      </div>
+    </div>
+        <div class="project-group">
+      <div class="group-heading company-heading">
+        <span class="logo" data-initials="CIMP"><img src="assets/logos/cimp.png" alt="" width="96" height="64"></span>
+        <div><h3>CIMP</h3><p class="muted">MBA in Business Analytics and Finance, 2015-17</p></div>
+      </div>
+      <div class="grid two project-grid">
+
+      <article class="card project" data-tags="ml sql finance">
+        <p class="kicker">Finance and risk</p>
+        <h3>PRiSE: predictive risk scoring for loan defaults</h3>
+        <p>A scoring engine that flags likely home loan defaulters from demographic, geographic, credit appraisal and loan-specific factors. It reduced loan defaults by 28% and the research won the Best Research Paper Award at GCBFR USA.</p>
+        <div class="tags"><span>Python</span><span>SQL</span><span>R</span><span>Machine learning</span></div>
+        <a class="text-link" href="https://drive.google.com/file/d/1D5ABJ0wycU69jcHpxwls-e-1bRz8Gu7W/view?usp=sharing" target="_blank" rel="noopener noreferrer">Read the paper</a>
+      </article>
+      </div>
+    </div>
     </div>
     <p class="more">All repositories are on <a href="https://github.com/MirzaSaniya" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
   </section>
@@ -398,9 +448,57 @@
     <div class="container">
       <div class="section-heading"><p class="eyebrow">Beyond work</p><h2>What I enjoy away from the screen</h2></div>
       <div class="grid two">
-        <article class="card"><h3>Hackathons and competitions</h3><p>I enjoy attending, and sometimes winning, hackathons and coding competitions. They're a good excuse to try new technology, meet people and drink a lot of free coffee.</p></article>
-        <article class="card"><h3>Outside of work</h3><p>I play badminton, visit museums and garden in my backyard. I recently skydived one of the world's highest tandem jumps, from 18,000 feet.</p></article>
+        <article class="card">
+          <h3>Fun activities</h3>
+          <ul class="facts-plain">
+            <li><strong>Badminton.</strong> My go-to way to switch off.</li>
+            <li><strong>Museums.</strong> I like wandering through them.</li>
+            <li><strong>Backyard gardening.</strong> Growing things at home.</li>
+            <li><strong>Skydiving.</strong> I recently did one of the world's highest tandem jumps, from 18,000 feet.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Hackathons and competitions</h3>
+          <p>I enjoy attending, and sometimes winning, hackathons and coding competitions. They're a good excuse to try new technology, meet people and drink a lot of free coffee.</p>
+        </article>
       </div>
+
+      <!-- BOOKS, MOVIES AND FOOD are ready to use. To turn them on, delete the line below this note
+           that has only the opening comment marker, and the matching line at the end of the block
+           that has only the closing marker. Then replace the sample text with your own picks.
+           Covers, posters and photos are optional: put them in assets/books/, assets/movies/ and
+           assets/food/. If an image is missing, the title still shows. -->
+      <!--
+      <div class="grid two interest-grid">
+        <article class="card">
+          <h3>Books</h3>
+          <p>A few I'd recommend.</p>
+          <ul class="shelf">
+            <li><span class="cover"><img src="assets/books/book-one.jpg" alt="" width="120" height="180"></span><cite>Book title</cite><span class="by">Author name</span></li>
+            <li><span class="cover"><img src="assets/books/book-two.jpg" alt="" width="120" height="180"></span><cite>Book title</cite><span class="by">Author name</span></li>
+            <li><span class="cover"><img src="assets/books/book-three.jpg" alt="" width="120" height="180"></span><cite>Book title</cite><span class="by">Author name</span></li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Movies</h3>
+          <p>Some I'd watch again.</p>
+          <ul class="shelf">
+            <li><span class="cover"><img src="assets/movies/movie-one.jpg" alt="" width="120" height="180"></span><cite>Movie title</cite></li>
+            <li><span class="cover"><img src="assets/movies/movie-two.jpg" alt="" width="120" height="180"></span><cite>Movie title</cite></li>
+            <li><span class="cover"><img src="assets/movies/movie-three.jpg" alt="" width="120" height="180"></span><cite>Movie title</cite></li>
+          </ul>
+        </article>
+        <article class="card interest-wide">
+          <h3>Food</h3>
+          <p>What I like to cook, eat or try.</p>
+          <ul class="gallery">
+            <li class="photo"><img src="assets/food/dish-one.jpg" alt="Short description of the dish" width="300" height="400"></li>
+            <li class="photo"><img src="assets/food/dish-two.jpg" alt="Short description of the dish" width="300" height="400"></li>
+            <li class="photo"><img src="assets/food/dish-three.jpg" alt="Short description of the dish" width="300" height="400"></li>
+          </ul>
+        </article>
+      </div>
+      -->
     </div>
   </section>
 
