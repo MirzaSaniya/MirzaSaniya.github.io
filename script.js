@@ -289,7 +289,7 @@
     var EXTS = ['.jpg', '.jpeg', '.png', '.webp', '.JPG', '.JPEG', '.PNG'];
 
     // Logos, covers and photos: if an image file is missing, hide it (the text stays)
-    document.querySelectorAll('.logo img, .cover img, .photo img').forEach(function (img) {
+    document.querySelectorAll('.logo img, .cover img, .photo img, .mark-box img').forEach(function (img) {
       // A data-base lists one or more file names (separated by |) without an ending.
       // The page tries each name with each common ending before giving up.
       var bases = (img.getAttribute('data-base') || '').split('|').filter(Boolean);
@@ -299,7 +299,12 @@
         EXTS.forEach(function (e) { if (b + e !== first) { candidates.push(b + e); } });
       });
       var attempt = -1;
-      function markMissing() { img.parentNode.classList.add('missing'); }
+      function markMissing() {
+        var holder = img.parentNode;
+        holder.classList.add('missing');
+        // A logo tile beside an entry: let the entry use the full width when there is no logo
+        if (holder.classList.contains('mark-box') && holder.closest('li')) { holder.closest('li').classList.remove('has-shot'); }
+      }
       function failed() {
         if (candidates.length) {
           attempt += 1;
@@ -342,7 +347,7 @@
         img.src = out.toDataURL('image/png');
       } catch (e) { /* cannot read the image (for example on a local file); keep the original */ }
     }
-    document.querySelectorAll('.logo img').forEach(function (img) {
+    document.querySelectorAll('.logo img, .mark-box img').forEach(function (img) {
       if (img.complete && img.naturalWidth > 0) { trimLogo(img); }
       else { img.addEventListener('load', function () { trimLogo(img); }); }
     });
