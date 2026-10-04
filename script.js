@@ -347,6 +347,40 @@
         .catch(hideResume);
     }
 
+    // Event photos: try common file endings, hide the photo if none exists, open a larger view on click
+    var EXTS = ['.jpg', '.jpeg', '.png', '.webp', '.JPG', '.JPEG', '.PNG'];
+    var lightbox = document.getElementById('lightbox');
+    var lbImg = document.getElementById('lightbox-img');
+    var lbCap = document.getElementById('lightbox-cap');
+    document.querySelectorAll('.shot').forEach(function (btn) {
+      var img = btn.querySelector('img');
+      var base = btn.getAttribute('data-base');
+      var tried = 0;
+      function giveUp() {
+        btn.hidden = true;
+        var li = btn.closest('li');
+        if (li) { li.classList.remove('has-shot'); }
+      }
+      function tryNext() {
+        tried += 1;
+        if (tried < EXTS.length) { img.src = base + EXTS[tried]; } else { giveUp(); }
+      }
+      img.addEventListener('error', tryNext);
+      if (img.complete && img.naturalWidth === 0 && img.getAttribute('src')) { tryNext(); }
+      btn.addEventListener('click', function () {
+        if (!lightbox || !lbImg) { return; }
+        lbImg.src = img.currentSrc || img.src;
+        lbImg.alt = img.alt;
+        lbCap.textContent = btn.getAttribute('data-caption') || '';
+        lightbox.showModal();
+      });
+    });
+    if (lightbox) {
+      lightbox.addEventListener('click', function (e) { if (e.target === lightbox) { lightbox.close(); } });
+      var lbClose = document.getElementById('lightbox-close');
+      if (lbClose) { lbClose.addEventListener('click', function () { lightbox.close(); }); }
+    }
+
     // Footer year
     var year = document.getElementById('year');
     if (year) { year.textContent = String(new Date().getFullYear()); }
