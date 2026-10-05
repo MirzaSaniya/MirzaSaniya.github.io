@@ -24,31 +24,24 @@
     var ctx = canvas.getContext('2d');
 
     var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var layerSizes = [4, 6, 6, 3];
-    var layers = [];
-    var nodes = [];
-    var edges = [];
-    var pulses = [];
-    var colors = {};
-    var width = 0, height = 0;
+    var layerSizes = [3, 5, 6, 5, 3];
+    var layers = [], nodes = [], edges = [], pulses = [], colors = {};
+    var width = 0, height = 0, portrait = true;
     var pointer = { x: -9999, y: -9999 };
-    var running = false;
-    var onScreen = true;
-    var lastTs = 0;
-    var spawnTimer = 0;
+    var running = false, onScreen = true, lastTs = 0, spawnTimer = 0;
 
     // Small seeded generator so the layout is the same on every visit.
-    var seed = 11;
+    var seed = 23;
     function rnd() { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }
 
+    // u runs along the signal's direction, v runs across it. Nodes keep away from the edges.
     layerSizes.forEach(function (count, li) {
       var column = [];
       for (var i = 0; i < count; i += 1) {
         var node = {
-          x: 0.08 + li * (0.84 / (layerSizes.length - 1)) + (rnd() - 0.5) * 0.03,
-          y: (i + 1) / (count + 1) + (rnd() - 0.5) * 0.04,
-          out: [],
-          glow: 0
+          u: 0.07 + li * (0.86 / (layerSizes.length - 1)) + (rnd() - 0.5) * 0.03,
+          v: 0.14 + ((i + 0.5) / count) * 0.72 + (rnd() - 0.5) * 0.05,
+          out: [], inc: 0, glow: 0
         };
         column.push(node);
         nodes.push(node);
@@ -56,28 +49,35 @@
       layers.push(column);
     });
 
+    // Each node connects to its two nearest neighbours in the next layer: a clean web, not a tangle.
+    function link(a, b) { var e = { a: a, b: b }; a.out.push(e); b.inc += 1; edges.push(e); }
+    function nearest(list, v) {
+      return list.slice().sort(function (p, q) { return Math.abs(p.v - v) - Math.abs(q.v - v); });
+    }
     for (var l = 0; l < layers.length - 1; l += 1) {
       layers[l].forEach(function (a) {
-        layers[l + 1].forEach(function (b) {
-          var edge = { a: a, b: b };
-          a.out.push(edge);
-          edges.push(edge);
-        });
+        nearest(layers[l + 1], a.v).slice(0, 2).forEach(function (b) { link(a, b); });
+      });
+      layers[l + 1].forEach(function (b) {
+        if (b.inc === 0) { link(nearest(layers[l], b.v)[0], b); }
       });
     }
 
+    function pos(n) { return portrait ? { x: n.v * width, y: n.u * height } : { x: n.u * width, y: n.v * height }; }
+
     function readColors() {
-      var s = getComputedStyle(canvas);
-      colors.bg = s.getPropertyValue('--h-bg').trim();
-      colors.accent = s.getPropertyValue('--h-accent').trim();
-      colors.pulse = s.getPropertyValue('--pulse').trim();
-      colors.edge = s.getPropertyValue('--net-edge').trim();
+      var st = getComputedStyle(canvas);
+      colors.bg = st.getPropertyValue('--h-bg').trim();
+      colors.accent = st.getPropertyValue('--h-accent').trim();
+      colors.pulse = st.getPropertyValue('--pulse').trim();
+      colors.edge = st.getPropertyValue('--net-edge').trim();
     }
 
     function resize() {
       var dpr = Math.min(window.devicePixelRatio || 1, 2);
       width = canvas.clientWidth;
       height = canvas.clientHeight;
+      portrait = height > width * 1.1;
       canvas.width = Math.round(width * dpr);
       canvas.height = Math.round(height * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -85,78 +85,71 @@
     }
 
     function spawn() {
-      if (pulses.length > 16) { return; }
+      if (pulses.length > 10) { return; }
       var start = layers[0][Math.floor(Math.random() * layers[0].length)];
       var edge = start.out[Math.floor(Math.random() * start.out.length)];
-      pulses.push({ edge: edge, t: 0, speed: 0.45 + Math.random() * 0.3 });
+      pulses.push({ edge: edge, t: 0, speed: 0.4 + Math.random() * 0.25 });
       start.glow = 1;
     }
 
     function update(dt) {
       spawnTimer -= dt;
-      if (spawnTimer <= 0) { spawn(); spawnTimer = 0.35 + Math.random() * 0.5; }
-
+      if (spawnTimer <= 0) { spawn(); spawnTimer = 0.5 + Math.random() * 0.7; }
       for (var i = pulses.length - 1; i >= 0; i -= 1) {
         var p = pulses[i];
         p.t += p.speed * dt;
         if (p.t >= 1) {
           var dest = p.edge.b;
           dest.glow = 1;
-          if (dest.out.length) {
-            p.edge = dest.out[Math.floor(Math.random() * dest.out.length)];
-            p.t = 0;
-          } else {
-            pulses.splice(i, 1);
-          }
+          if (dest.out.length) { p.edge = dest.out[Math.floor(Math.random() * dest.out.length)]; p.t = 0; }
+          else { pulses.splice(i, 1); }
         }
       }
-
-      nodes.forEach(function (n) { n.glow = Math.max(0, n.glow - dt * 1.4); });
+      nodes.forEach(function (n) { n.glow = Math.max(0, n.glow - dt * 1.3); });
     }
 
     function draw() {
       ctx.clearRect(0, 0, width, height);
-
       ctx.lineWidth = 1;
       ctx.strokeStyle = colors.edge;
       ctx.beginPath();
       edges.forEach(function (e) {
-        ctx.moveTo(e.a.x * width, e.a.y * height);
-        ctx.lineTo(e.b.x * width, e.b.y * height);
+        var a = pos(e.a), b = pos(e.b);
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
       });
       ctx.stroke();
 
-      // Pulses with a short fading tail
+      // Signals travelling along the lines, with a short fading tail
       pulses.forEach(function (p) {
-        var ax = p.edge.a.x * width, ay = p.edge.a.y * height;
-        var bx = p.edge.b.x * width, by = p.edge.b.y * height;
+        var a = pos(p.edge.a), b = pos(p.edge.b);
         for (var k = 0; k < 6; k += 1) {
-          var tt = Math.max(0, p.t - k * 0.035);
+          var tt = Math.max(0, p.t - k * 0.04);
           ctx.globalAlpha = (1 - k / 6) * 0.9;
           ctx.fillStyle = colors.pulse;
           ctx.beginPath();
-          ctx.arc(ax + (bx - ax) * tt, ay + (by - ay) * tt, 2.6 - k * 0.3, 0, Math.PI * 2);
+          ctx.arc(a.x + (b.x - a.x) * tt, a.y + (b.y - a.y) * tt, 2.6 - k * 0.3, 0, Math.PI * 2);
           ctx.fill();
         }
       });
       ctx.globalAlpha = 1;
 
-      // Nodes
       nodes.forEach(function (n) {
-        var x = n.x * width, y = n.y * height;
-        var dx = x - pointer.x, dy = y - pointer.y;
-        var near = Math.max(0, 1 - Math.sqrt(dx * dx + dy * dy) / 120);
+        var q = pos(n);
+        var dx = q.x - pointer.x, dy = q.y - pointer.y;
+        var near = Math.max(0, 1 - Math.sqrt(dx * dx + dy * dy) / 110);
         var lit = Math.min(1, n.glow + near);
-
         ctx.beginPath();
-        ctx.arc(x, y, 4.5 + lit * 3, 0, Math.PI * 2);
+        ctx.arc(q.x, q.y, 4 + lit * 3, 0, Math.PI * 2);
         ctx.fillStyle = lit > 0.05 ? colors.accent : colors.bg;
         ctx.globalAlpha = lit > 0.05 ? 0.35 + lit * 0.65 : 1;
         ctx.fill();
         ctx.globalAlpha = 1;
         ctx.lineWidth = 1.5;
         ctx.strokeStyle = colors.accent;
+        ctx.globalAlpha = 0.8;
         ctx.stroke();
+        ctx.globalAlpha = 1;
       });
     }
 
@@ -168,7 +161,6 @@
       draw();
       window.requestAnimationFrame(frame);
     }
-
     function start() {
       if (running || reduceMotion || !onScreen || document.hidden) { return; }
       running = true;
@@ -179,7 +171,6 @@
 
     readColors();
     resize();
-
     if (reduceMotion) { draw(); }
 
     if (!reduceMotion) {
@@ -202,9 +193,7 @@
 
     if ('ResizeObserver' in window) { new ResizeObserver(resize).observe(canvas); }
     else { window.addEventListener('resize', resize); }
-
   }
-
 
   document.addEventListener('DOMContentLoaded', function () {
 
@@ -460,6 +449,75 @@
         promptIndex = (promptIndex + 1) % PROMPTS.length;
         promptText.textContent = PROMPTS[promptIndex][0];
         promptOn.textContent = PROMPTS[promptIndex][1];
+      });
+    }
+
+    // Copy email: works even when the computer has no mail app set up
+    function copyText(text) {
+      if (navigator.clipboard && window.isSecureContext) { return navigator.clipboard.writeText(text); }
+      return new Promise(function (resolve, reject) {
+        var box = document.createElement('textarea');
+        box.value = text;
+        box.setAttribute('readonly', '');
+        box.style.position = 'fixed';
+        box.style.opacity = '0';
+        document.body.appendChild(box);
+        box.select();
+        var ok = false;
+        try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+        document.body.removeChild(box);
+        if (ok) { resolve(); } else { reject(new Error('copy failed')); }
+      });
+    }
+    document.querySelectorAll('[data-copy]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        copyText(btn.getAttribute('data-copy')).then(function () {
+          var swap = btn.querySelector('.copy-label');
+          if (swap) {
+            var original = swap.textContent;
+            swap.textContent = 'Copied to clipboard';
+            window.setTimeout(function () { swap.textContent = original; }, 1800);
+            return;
+          }
+          var label = btn.textContent.trim();
+          if (label) {
+            btn.textContent = 'Copied';
+            window.setTimeout(function () { btn.textContent = label; }, 1800);
+          } else {
+            var note = btn.parentNode.querySelector('.copied');
+            if (note) {
+              note.textContent = 'Copied';
+              window.setTimeout(function () { note.textContent = ''; }, 1800);
+            }
+          }
+        }).catch(function () { window.location.href = 'mailto:' + btn.getAttribute('data-copy'); });
+      });
+    });
+
+    // Optional music: shown only when assets/music/track.mp3 exists. It never plays by itself.
+    var music = document.getElementById('music');
+    var audio = document.getElementById('bgm');
+    var musicBtn = document.getElementById('music-toggle');
+    if (music && audio && musicBtn && window.fetch) {
+      var source = audio.querySelector('source');
+      var titleEl = document.getElementById('track-title');
+      if (titleEl && music.getAttribute('data-title')) { titleEl.textContent = music.getAttribute('data-title'); }
+      fetch(source.getAttribute('src'), { method: 'HEAD' })
+        .then(function (r) { if (r.ok) { music.hidden = false; } })
+        .catch(function () { /* no music file: keep the player hidden */ });
+      function showPlaying(on) {
+        musicBtn.classList.toggle('playing', on);
+        musicBtn.setAttribute('aria-pressed', String(on));
+        musicBtn.setAttribute('aria-label', on ? 'Pause music' : 'Play music');
+      }
+      audio.addEventListener('play', function () { showPlaying(true); });
+      audio.addEventListener('pause', function () { showPlaying(false); });
+      musicBtn.addEventListener('click', function () {
+        if (audio.paused) {
+          audio.play().catch(function () { showPlaying(false); /* the browser blocked playback */ });
+        } else {
+          audio.pause();
+        }
       });
     }
 
